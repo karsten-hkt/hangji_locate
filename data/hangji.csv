@@ -1,0 +1,21 @@
+time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
+2022-07-14T00:58:15.000Z,24.7798,121.9071,35,4.1,mb,15,110,0.419,0.69,us,us6000i2aa,2022-07-15T03:30:23.040Z,"15 km E of Yilan, Taiwan",earthquake,3.5,2,0.301,3,reviewed,us,us
+2022-07-14T01:04:05.000Z,22.5714,121.3639,91.88,4.5,mb,28,116,1.267,0.67,us,us6000i28z,2022-07-16T05:40:06.040Z,"89 km NE of Hengchun, Taiwan",earthquake,12.2,7.7,0.121,20,reviewed,us,us
+2022-07-14T01:10:25.000Z,36.0421,70.7401,109.04,4.2,mb,32,85,1.089,0.55,us,us6000i1r9,2022-07-12T05:36:46.040Z,"70 km NNW of P?r?n, Afghanistan",earthquake,4.1,7.4,0.128,17,reviewed,us,us
+2022-07-14T01:34:40.000Z,36.5476,71.2603,200.7,4.2,mb,27,73,0.796,0.48,us,us6000i1r5,2022-07-14T00:46:22.040Z,"28 km WSW of Ashk?sham, Afghanistan",earthquake,8.8,2.8,0.176,9,reviewed,us,us
+2022-07-14T01:42:25.000Z,23.4249,82.493,10,4.6,mb,66,86,5.03,0.73,us,us6000i1hw,2022-07-11T22:00:09.389Z,"19 km NNW of Baikunthpur, India",earthquake,10.4,1.9,0.074,54,reviewed,us,us
+2022-07-14T01:44:55.000Z,16.9265,75.717,10,4.5,mb,53,77,9.696,0.76,us,us6000i13p,2022-07-14T19:23:43.295Z,"11 km N of Bijapur, India",earthquake,10.5,1.9,0.089,37,reviewed,us,us
+2022-07-14T01:49:35.000Z,41.7379,81.3757,10,4.4,mb,39,75,2.115,0.46,us,us6000i0tq,2022-07-08T12:59:12.040Z,"110 km ENE of Aksu, China",earthquake,6.2,1.9,0.114,22,reviewed,us,us
+2022-07-14T01:52:55.000Z,41.8105,81.4547,10,4.3,mb,34,75,2.101,0.67,us,us6000i0tn,2022-07-08T12:48:07.040Z,"southern Xinjiang, China",earthquake,3.1,1.9,0.129,17,reviewed,us,us
+2022-07-14T01:56:55.000Z,41.7568,81.4017,10,4.5,mb,30,113,2.114,0.84,us,us6000i0g8,2022-07-15T02:07:30.040Z,"113 km NE of Aksu, China",earthquake,4.9,1.9,0.163,11,reviewed,us,us
+2022-07-14T02:05:20.000Z,24.8304,121.9869,8.92,4.3,mwr,47,46,0.467,0.55,us,us6000i0ti,2022-07-09T10:05:29.108Z,"25 km ENE of Yilan, Taiwan",earthquake,2.6,4.9,0.071,19,reviewed,us,us
+2022-07-14T02:09:05.000Z,36.4514,71.0547,134.96,4,mb,31,75,0.774,0.52,us,us6000i0th,2022-07-16T07:10:09.040Z,"49 km SSE of Jurm, Afghanistan",earthquake,6.5,5.3,0.139,14,reviewed,us,us
+2022-07-14T02:11:45.000Z,27.8815,94.1134,10,4.3,mb,23,108,5.237,0.65,us,us6000i2nr,2022-07-15T21:45:30.040Z,"41 km NE of Ziro, India",earthquake,8.4,1.7,0.169,11,reviewed,us,us
+2022-07-14T02:14:20.000Z,18.6462,120.7822,36.12,4.4,mb,25,231,4.159,0.84,us,us6000i2np,2022-07-15T21:14:34.040Z,"9 km N of Pagudpud, Philippines",earthquake,14.4,10.3,0.203,7,reviewed,us,us
+2022-07-14T02:17:30.000Z,26.7948,126.4146,10,5,mww,79,77,1.66,0.65,us,us6000i0q6,2022-07-16T14:13:07.040Z,"141 km WNW of Naha, Japan",earthquake,5.1,1.8,0.066,22,reviewed,us,us
+2022-07-14T02:22:55.306Z,27.0985,126.5365,10,4.3,mb,21,72,1.571,0.49,us,us6000i24a,2022-07-16T23:47:23.040Z,"148 km WNW of Ishikawa, Japan",earthquake,6,1.9,0.153,12,reviewed,us,us
+2022-07-14T02:27:35.000Z,27.1286,126.3425,10,4.2,mb,26,77,1.746,0.92,us,us6000i249,2022-07-16T23:34:11.040Z,"166 km WNW of Ishikawa, Japan",earthquake,7.7,1.9,0.159,11,reviewed,us,us
+2022-07-14T02:29:15.000Z,18.6394,96.782,10,4.6,mb,21,153,1.286,0.57,us,us6000i247,2022-07-16T23:21:55.040Z,"40 km ENE of Pyu, Myanmar",earthquake,6.6,1.9,0.172,10,reviewed,us,us
+2022-07-14T02:32:30.000Z,36.4242,71.1755,89,4.2,mb,48,73,0.849,1.04,us,us6000i0mu,2022-07-13T17:40:12.040Z,"43 km SW of Ashk?sham, Afghanistan",earthquake,7.1,6.9,0.094,33,reviewed,us,us
+2022-07-14T02:34:25.000Z,35.6429,69.7842,85.8,4.3,mb,34,85,1.256,0.57,us,us6000i0gh,2022-07-07T06:00:36.040Z,"44 km NE of B?z?rak, Afghanistan",earthquake,7.3,8.9,0.129,17,reviewed,us,us
+2022-07-14T02:36:20.000Z,41.7568,81.4017,10,4.5,mb,30,113,2.114,0.84,us,us6000i0g8,2022-07-15T02:07:30.040Z,"113 km NE of Aksu, China",earthquake,4.9,1.9,0.163,11,reviewed,us,us
