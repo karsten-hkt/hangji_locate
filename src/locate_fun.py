@@ -18,6 +18,22 @@ def dis(p1, p2):
 	'''
 	return np.linalg.norm(p1 - p2)
 
+def bootstrap_sample(d, sample_ratio=0.8):
+	"""
+	对数据进行bootstrap采样。
+	选取sample_ratio比例的数据，其余数据赋值为0。
+
+	:param data: 原始数据，一维数组。
+	:param sample_ratio: 采样的比例，默认为0.8。
+	:return: 经过bootstrap采样处理的数据。
+	"""
+	n = len(d)
+	sample_size = int(n * sample_ratio)
+	sampled_indices = np.random.choice(n, size=sample_size, replace=True)
+	new_data = np.zeros(n)
+	np.put(new_data, sampled_indices, d[sampled_indices])
+	return d
+
 
 def waveform_processing(st):
 	'''
@@ -82,7 +98,7 @@ def build_matrices(rel_coordinates, stp, E0, v, sigma_t, maxlag, sample_rate):
 
 				if maxcor > 0.3:
 					corr[cnt] = maxcor
-					W[cnt, cnt] = maxcor / sigma_t
+					W[cnt, cnt] = maxcor / (5*sigma_t) /1000
 					d[cnt] = lagtime - (dis(E0, s_i) - dis(E0, s_j)) / v
 					G[cnt, 0] = ((E0[0] - s_i[0]) / dis(E0, s_i) - (E0[0] - s_j[0]) / dis(E0, s_j)) / v
 					G[cnt, 1] = ((E0[1] - s_i[1]) / dis(E0, s_i) - (E0[1] - s_j[1]) / dis(E0, s_j)) / v

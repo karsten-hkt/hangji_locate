@@ -40,7 +40,7 @@ G_now = np.zeros((N, 1))
 m_0 = np.zeros((M, 1))
 v0 = np.zeros((M, 1))
 alpha = 10**-5
-beta = np.logspace(-6, 0, 50)
+beta = np.logspace(-4, -2, 50)
 # 对m给定起始位置以及速度
 for i in range(M):
 	if i % 3 == 0:

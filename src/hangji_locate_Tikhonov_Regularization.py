@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 d = np.load('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/d.npy')
 W = np.load('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/W.npy')
 event_name = np.load('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/event_name.npy')
+event_name = [timestamp.split('T')[1].split('Z')[0] for timestamp in event_name]
 ###############################
 # 读取每个台站的编号以及相对的经纬度
 stations = pd.read_csv('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/station_TDS.txt', header=None, names=['station', 'lon', 'lat'], sep=',')
@@ -40,7 +41,7 @@ G_now = np.zeros((N,1))
 m = np.zeros((M, 1))
 v0 = np.zeros((M, 1))
 vk = v0.copy()
-alpha = 10**-5
+alpha = 0.00029
 beta = 0.00356
 # 对m给定起始位置以及速度
 for i in range(M):
@@ -52,7 +53,7 @@ for i in range(M):
 		v0[i] = 0
 	else:
 		m[i] = 200
-		v0[i] = 200
+		v0[i] = 250
 # 构建L
 L = np.zeros((K-1,M))
 for i in range(K-1):
@@ -92,6 +93,8 @@ for circle in range(stop_circle):
 	# 加入正则化项
 	delta_m = (np.linalg.inv(J.T @ J + alpha**2+ beta**2*L.T @ L) @
 			   (-J.T @ (G_m - d) - alpha**2*(vk-v0) - beta**2 * L.T @ L @ m))
+	#delta_m = (np.linalg.inv(J.T @ W.T @ W @ J + alpha ** 2 + beta ** 2 * L.T @ L) @
+	#			(-J.T @ W.T @ W @ (G_m - d) - alpha**2*(vk-v0) - beta**2 * L.T @ L @ m))
 	# 更新m
 	m = m + delta_m
 	# 计算新的G
@@ -125,12 +128,12 @@ print(m)
 plt.figure(figsize=(12, 8))
 # 绘制各个台站
 for station in rel_coordinates:
-	plt.plot(station[1].astype(float), station[2].astype(float), 'o', markersize=5, color='yellow')
-	plt.text(station[1].astype(float), station[2].astype(float), station[0])
+	plt.plot(station[1].astype(float), station[2].astype(float), 'o', markersize=6, color='red')
+	#plt.text(station[1].astype(float), station[2].astype(float), station[0])
 # 绘制地震
 for i in range(K):
-	plt.plot(m[i*3], m[i*3+1], 'o', markersize=5, color = 'b')
-	plt.text(m[i*3], m[i*3+1], event_name[i], fontsize=8)
+	plt.plot(m[i*3], m[i*3+1], 'o', markersize=10, color = 'b')
+	plt.text(m[i*3]-5, m[i*3+1]-5, event_name[i]+'(v=%.2f)'%(m[i*3+2][0]), fontsize=11)
 # 设置x，y坐标值范围
 plt.xlabel('Relative X coordinate (meters)')
 plt.ylabel('Relative Y coordinate (meters)')

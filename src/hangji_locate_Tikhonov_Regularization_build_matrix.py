@@ -85,7 +85,7 @@ for root, dirs, files in os.walk(event_path):
                     w_j = sw_j[0]
                     maxcor, lagtime = locate_fun.lag_time(w_i, w_j, maxlag, sample_rate)
                     if maxcor > 0.3:
-                        W[cnt, cnt] = maxcor / sigma_t
+                        W[cnt, cnt] = maxcor / sigma_t/ 1000
                         d[cnt] = lagtime
         event_loc += 1
 ###############################

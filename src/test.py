@@ -1,28 +1,26 @@
-# !/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-===========================
-@Time : 2023/12/16 14:34
-@Author : karsten
-@File : test.py
-@Software: PyCharm
-============================
-"""
-# 绘制最终定位结果
-# 开始画图
-plt.figure(figsize=(12, 8))
-# 绘制各个台站
-for station in rel_coordinates:
-	plt.plot(station[1].astype(float), station[2].astype(float), 'o', markersize=5, color='yellow')
-	plt.text(station[1].astype(float), station[2].astype(float), station[0])
-# 绘制地震
-for i in range(K):
-	plt.plot(m[i*3], m[i*3+1], 'o', markersize=5, color = 'b')
-	plt.text(m[i*3], m[i*3+1], event_name[i], fontsize=8)
-# 设置x，y坐标值范围
-plt.xlim(-60,60)
-plt.ylim(-20,100)
-plt.xlabel('Relative X coordinate (meters)')
-plt.ylabel('Relative Y coordinate (meters)')
-plt.title('Relative event and station positions of stations(22917)')
-plt.savefig('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/all_G_m_without_velocity.jpg',dpi=300)
+import numpy as np
+
+def bootstrap_sample(data, sample_ratio=0.8):
+    """
+    对数据进行bootstrap采样。
+    选取sample_ratio比例的数据，其余数据赋值为0。
+
+    :param data: 原始数据，一维数组。
+    :param sample_ratio: 采样的比例，默认为0.8。
+    :return: 经过bootstrap采样处理的数据。
+    """
+    n = len(data)
+    sample_size = int(n * sample_ratio)
+    sampled_indices = np.random.choice(n, size=sample_size, replace=True)
+    new_data = np.zeros(n)
+    np.put(new_data, sampled_indices, data[sampled_indices])
+    return new_data
+
+# 示例数据
+data = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+# 进行bootstrap采样
+sampled_data = bootstrap_sample(data)
+
+print("原始数据:", data)
+print("采样后的数据:", sampled_data)

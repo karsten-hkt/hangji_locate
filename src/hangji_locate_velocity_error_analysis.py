@@ -49,7 +49,7 @@ stop_circle = 10
 stop_critical = 10**-4
 # 使用蒙特卡洛误差传播分析各个点的误差
 # 重复次数
-N_circle = 20
+N_circle = 200
 m_i = [] # 存储每次迭代的位置估计
 for tmp in range(N_circle):
 	# 给定一个带有误差的速度

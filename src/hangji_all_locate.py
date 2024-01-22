@@ -43,6 +43,7 @@ stop_circle = 10
 stop_critical = 0.0001
 # 记录每个地震事件对应的事件名称和位置
 event_locate = []
+
 ###############################
 # 读取某个地震事件下所有的数据
 event_path = '/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/hangji_quake'

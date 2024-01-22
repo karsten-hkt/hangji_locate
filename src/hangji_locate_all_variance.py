@@ -44,7 +44,7 @@ sigma_t = 1 / sample_rate  # 用采样间隔来给定
 # 最大循环个数
 stop_circle = 20
 stop_critical = 0.0001
-N_circle = 20 # 误差传播矩阵计算次数
+N_circle = 100 # 误差传播矩阵计算次数
 # 记录每个地震事件对应的事件名称和位置
 event_locate = []
 ###############################

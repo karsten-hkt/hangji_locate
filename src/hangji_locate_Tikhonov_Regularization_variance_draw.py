@@ -15,7 +15,10 @@ import pandas as pd
 import numpy as np
 from pyproj import CRS, Transformer
 from matplotlib.patches import Ellipse
-
+font = {
+'weight' : 'normal',
+'size'   : 15,
+        }
 # 读取每个台站的编号以及相对的经纬度
 stations = pd.read_csv('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/station_TDS.txt', header=None, names=['station', 'lon', 'lat'], sep=',')
 
@@ -42,7 +45,7 @@ for station, coords in station_info.items():
 m = np.load('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/m_locate.npy')
 m_variance = np.load('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/m_variance.npy')
 event_name = np.load('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/event_name.npy')
-event_name = [timestamp.split('T')[1] for timestamp in event_name]
+event_name = [timestamp.split('T')[1].split('Z')[0] for timestamp in event_name]
 ###############################
 # 开始画图
 plt.figure(figsize=(12, 8))
@@ -55,11 +58,11 @@ K = 20 #总地震个数
 # 绘制地震
 for i in range(K):
 	if m_variance[3*i, 3*i] > 80 or m_variance[3*i+1, 3*i+1] > 80:
-		plt.plot(m[3*i], m[3*i+1], 'x', markersize=5, color='blue')
-		plt.text(m[3*i], m[3*i+1], event_name[i]+'_wrong'+f' v={m[3*i+2]}', fontsize=8)
+		plt.plot(m[3*i], m[3*i+1], 'x', markersize=10, color='blue')
+		plt.text(m[3*i], m[3*i+1], event_name[i]+'_wrong'+f' v={m[3*i+2]}', fontsize=11)
 	else:
-		plt.plot(m[3*i], m[3*i+1], 'o', markersize=5, color='lightblue', alpha=0.5)
-		plt.text(m[3*i], m[3*i+1],  event_name[i]+f' v={m[3*i+2]}', fontsize=8)
+		plt.plot(m[3*i], m[3*i+1], 'o', markersize=10, color='lightblue', alpha=0.5)
+		plt.text(m[3*i], m[3*i+1],  event_name[i]+'(v=%.2f)'%(m[i*3+2][0]), fontsize=11)
 		# 计算椭圆的宽度和高度（方差的平方根的两倍作为椭圆的轴长）
 		ellipse_x = 2 * np.sqrt(m_variance[3*i, 3*i])
 		ellipse_y = 2 * np.sqrt(m_variance[3*i+1, 3*i+1])
@@ -68,7 +71,7 @@ for i in range(K):
 						  edgecolor='b',
 						  facecolor='none')
 		plt.gca().add_patch(ellipse)
-plt.xlabel('Relative X coordinate (meters)')
-plt.ylabel('Relative Y coordinate (meters)')
-plt.title('Relative event and station positions of stations(22917)')
-plt.savefig('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/Tikohonov_Regulazation_with_error_0.01.jpg',dpi=300)
+plt.xlabel('Relative X coordinate (meters)',font)
+plt.ylabel('Relative Y coordinate (meters)',font)
+plt.title('Relative event and station positions of stations(22917)',font)
+plt.savefig('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/Tikohonov_Regulazation_with_error_0.005.jpg',dpi=300)

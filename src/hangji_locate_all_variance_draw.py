@@ -15,7 +15,10 @@ import pandas as pd
 import numpy as np
 from pyproj import CRS, Transformer
 from matplotlib.patches import Ellipse
-
+font = {
+'weight' : 'normal',
+'size'   : 15,
+        }
 # 读取每个台站的编号以及相对的经纬度
 stations = pd.read_csv('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/station_TDS.txt', header=None, names=['station', 'lon', 'lat'], sep=',')
 
@@ -54,11 +57,11 @@ for station, (x, y) in rel_coordinates.items():
 # 绘制地震
 for i in range(len(event_locate)):
 	if event_locate_np[i, 3] > 80 or event_locate_np[i, 4] > 80:
-		plt.plot(event_locate_np[i, 1], event_locate_np[i, 2], 'x', markersize=5, color='blue')
-		plt.text(event_locate_np[i, 1], event_locate_np[i, 2], event_locate_np[i, 0]+'_wrong', fontsize=8)
+		plt.plot(event_locate_np[i, 1], event_locate_np[i, 2], 'x', markersize=10, color='blue')
+		plt.text(event_locate_np[i, 1]-5, event_locate_np[i, 2]-5, event_locate_np[i, 0]+'_wrong', fontsize=8)
 	else:
-		plt.plot(event_locate_np[i, 1], event_locate_np[i, 2], 'o', markersize=5, color='lightblue', alpha=0.5)
-		plt.text(event_locate_np[i, 1], event_locate_np[i, 2], event_locate_np[i, 0], fontsize=8)
+		plt.plot(event_locate_np[i, 1], event_locate_np[i, 2], 'o', markersize=10, color='lightblue', alpha=0.5)
+		plt.text(event_locate_np[i, 1]-5, event_locate_np[i, 2]-5, event_locate_np[i, 0], fontsize=8)
 		# 计算椭圆的宽度和高度（方差的平方根的两倍作为椭圆的轴长）
 		ellipse_x = 2 * np.sqrt(event_locate_np[i, 3])
 		ellipse_y = 2 * np.sqrt(event_locate_np[i, 4])
@@ -71,7 +74,7 @@ for i in range(len(event_locate)):
 
 plt.xlim(-60,60)
 plt.ylim(-20,100)
-plt.xlabel('Relative X coordinate (meters)')
-plt.ylabel('Relative Y coordinate (meters)')
-plt.title('Relative event and station positions of stations(22917)')
-plt.savefig('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/Relative event and station positions of stations(22917)_200_0.01_locate_0_50.jpg',dpi=300)
+plt.xlabel('Relative X coordinate (meters)',font)
+plt.ylabel('Relative Y coordinate (meters)',font)
+plt.title('Relative event and station positions of stations(22917)',font)
+plt.savefig('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/Relative event and station positions of stations(22917)_200_sigma_0.005.jpg',dpi=300)

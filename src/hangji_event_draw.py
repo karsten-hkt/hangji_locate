@@ -12,6 +12,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from pyproj import CRS, Transformer
+font = {
+'weight' : 'normal',
+'size'   : 15,
+        }
 # 读取每个台站的编号以及相对的经纬度
 stations = pd.read_csv('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/data/station_TDS.txt', header=None, names=['station', 'lon', 'lat'], sep=',')
 
@@ -49,13 +53,13 @@ for station, (x, y) in rel_coordinates.items():
 
 # 绘制地震
 for i in range(len(event_locate)):
-	plt.plot(event_locate_np[i,1], event_locate_np[i,2], 'o', markersize=5, color = 'b')
-	plt.text(event_locate_np[i,1], event_locate_np[i,2], event_locate_np[i,0], fontsize=8)
+	plt.plot(event_locate_np[i,1], event_locate_np[i,2], 'o', markersize=10, color = 'b')
+	plt.text(event_locate_np[i,1]-5, event_locate_np[i,2]-5, event_locate_np[i,0], fontsize=8)
 # 设置x，y坐标值范围
 
 plt.xlim(-60,60)
 plt.ylim(-20,100)
-plt.xlabel('Relative X coordinate (meters)')
-plt.ylabel('Relative Y coordinate (meters)')
-plt.title('Relative event and station positions of stations(22917)')
+plt.xlabel('Relative X coordinate (meters)',font)
+plt.ylabel('Relative Y coordinate (meters)',font)
+plt.title('Relative event and station positions of stations(22917)',font)
 plt.savefig('/Users/karsten_hkt/PycharmProjects/seismo_live_local/obspy_learning/output/Relative event and station positions of stations(22917)_200.jpg',dpi=300)
